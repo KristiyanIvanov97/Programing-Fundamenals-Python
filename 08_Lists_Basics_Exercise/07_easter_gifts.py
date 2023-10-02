@@ -10,7 +10,7 @@ while command != end_command:
                 names_of_the_gifts.insert(index, "None")
             index += 1
     elif command[0] == "Required":
-        if int(command[2]) < len(names_of_the_gifts):
+        if 0 <= int(command[2]) < len(names_of_the_gifts):
             names_of_the_gifts.pop(int(command[2]))
             names_of_the_gifts.insert(int(command[2]), command[1])
     elif command[0] == "JustInCase":
