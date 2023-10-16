@@ -12,6 +12,8 @@ while command != "course start":
     if modify_command[0] == "Remove":
         if modify_command[1] in initial_schedule:
             initial_schedule.remove(modify_command[1])
+            if f'{modify_command[1]}-Exercise' in initial_schedule:
+                initial_schedule.remove(f'{modify_command[1]}-Exercise')
     if modify_command[0] == "Swap":
         if modify_command[1] in initial_schedule and modify_command[2] in initial_schedule:
             first_lesson_to_swap = initial_schedule.index(modify_command[1])
@@ -27,12 +29,12 @@ while command != "course start":
                 new_index = initial_schedule.index(modify_command[2])
                 initial_schedule.insert(new_index + 1, f'{modify_command[2]}-Exercise')
     if modify_command[0] == "Exercise":
-        if modify_command[1] not in initial_schedule:
+        if modify_command[1] in initial_schedule and f"{modify_command[1]}-Exercise" not in initial_schedule:
+            lesson_i = initial_schedule.index(modify_command[1])
+            initial_schedule.insert(lesson_i + 1, f'{modify_command[1]}-Exercise')
+        elif modify_command[1] not in initial_schedule:
             initial_schedule.append(modify_command[1])
-            initial_schedule.append(f"{modify_command[1]}-Exercise")
-        else:
-            lesson_index = initial_schedule.index(modify_command[1])
-            initial_schedule.insert(lesson_index + 1, modify_command[1])
+            initial_schedule.append(f'{modify_command[1]}-Exercise')
     command = input()
 
 for curr_lesson in range(1, len(initial_schedule) + 1):
