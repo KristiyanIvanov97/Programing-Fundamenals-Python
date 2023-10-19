@@ -29,10 +29,10 @@ def is_invalid_input(index1, index2, sequence):
 
 
 def invalid_indexes(index1, index2, sequence, moves):
-        middle_index = len(sequence) // 2
-        sequence.insert(middle_index, f"-{moves}a")
-        sequence.insert(middle_index, f"-{moves}a")
-        print("Invalid input! Adding additional elements to the board")
+    middle_index = len(sequence) // 2
+    sequence.insert(middle_index, f"-{moves}a")
+    sequence.insert(middle_index, f"-{moves}a")
+    print("Invalid input! Adding additional elements to the board")
 
 
 def valid_index(index1, index2, sequence):
